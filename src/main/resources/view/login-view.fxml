@@ -17,7 +17,7 @@
     prefHeight="419.0"
     prefWidth="668.0"
     styleClass="back"
-    stylesheets="@../css/login-view.css"
+    stylesheets="@../css/styles.css"
     xmlns="http://javafx.com/javafx/21.0.1"
     xmlns:fx="http://javafx.com/fxml/1"
     fx:controller="main.java.com.awenocorp.abarroteria.kinal.controller.LoginController">
