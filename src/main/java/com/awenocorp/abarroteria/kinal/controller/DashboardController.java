@@ -14,10 +14,13 @@ import javafx.fxml.Initializable;
  * @author informatica
  */
 public class DashboardController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
+    private DashboardServives dashboardService;
+    
+    public DashboardController(DashboardService dashboardService){
+        this.dashboardService = dashboardService;
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
