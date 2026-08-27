@@ -1,0 +1,17 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.back{
+ 
+ -fx-background-color:#191970
+}
+
+.board{
+-fx-background-color: #ffffff;
+-fx-border-color: #ffffff;
+-fx-border-width: 2px;
+-fx-border-style: solid;
+-fx-border-radius: 8px;
+-fx-background-radius: 8px;
+}

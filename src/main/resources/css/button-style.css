@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.but {
+ -fx-background-color:cyan;
+}
+
+.butt{
+  -fx-background-color:lightgreen;
+}
