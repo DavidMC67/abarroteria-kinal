@@ -3,5 +3,19 @@
  */
 
 .mainFxmlClass {
+    
+.btn-eliminar {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-padding: 10 30 10 30;
+    -fx-cursor: hand;
+}
+
+.btn-eliminar:hover {
+    -fx-background-color: #b71c1c;
+}
 
 }
+

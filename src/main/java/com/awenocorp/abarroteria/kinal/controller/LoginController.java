@@ -38,7 +38,7 @@ public class LoginController implements Initializable {
         // TODO
     }
 
-    public void handleLogin(){
+    public void handleLogin() throws Exception{
         if(txtFieldEmail.getText().isEmpty() || txtFieldPassword.getText().isEmpty()){
             sceneManager.showAlertInfo("hay campos sin llenar", "No puedes dejar espacios en blanco", "Intenta de nuevo", Alert.AlertType.INFORMATION);
         } else {

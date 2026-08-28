@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane
-    prefHeight="419.0"
+    prefHeight="640.0"
     prefWidth="668.0"
     styleClass="back"
     stylesheets="@../css/styles.css"

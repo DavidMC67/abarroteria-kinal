@@ -2,21 +2,26 @@
 package main.java.com.awenocorp.abarroteria.kinal.util;
 
 import java.io.IOException;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import main.java.com.awenocorp.abarroteria.kinal.controller.DashboardController;
 import main.java.com.awenocorp.abarroteria.kinal.controller.LoginController;
 import main.java.com.awenocorp.abarroteria.kinal.repository.AuthRepository;
+import main.java.com.awenocorp.abarroteria.kinal.repository.ProductoRepository;
 import main.java.com.awenocorp.abarroteria.kinal.service.AuthService;
+import main.java.com.awenocorp.abarroteria.kinal.service.DashboardService;
 
 
 public class SceneManager {
     
     //atributos
     private final Stage stage;
+    private final String FXML_PATH = "/main/resources/view/";
     
     //constructor 
     public SceneManager(Stage stage){
@@ -50,17 +55,27 @@ public class SceneManager {
     
     //dashboard Stage
     public void showDashboardView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/dashboard-view.fxml"));
-        
-        // Si tu DashboardController también necesita inyección de dependencias o servicios en el futuro, 
-        // puedes configurarlo aquí con un controllerFactory similar al del login.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "dashboard-view.fxml"));
+        loader.setControllerFactory(
+        clazz -> {
+           if(clazz == DashboardController.class){
+            ProductoRepository productoRepository = new ProductoRepository();
+            DashboardService dashboardService = new DashboardService(productoRepository);
+            return new DashboardController(dashboardService, this);
+        }
+        try{
+            return clazz.getDeclaredConstructor().newInstance();
+        }catch(Exception e){
+            throw new RuntimeException("Error al crear el constructor (Dashboard)");
+        }
+        });
         
         Parent root = loader.load();
-        Scene scene = new Scene(root); // O puedes definirle un ancho y alto específico si lo prefieres
+        Scene scene = new Scene(root, 600, 600);
         stage.setScene(scene);
-        stage.setTitle("Dashboard - Abarrotería Kinal");
         stage.centerOnScreen();
         stage.show();
+        
     }
     
     //ventana modal reutilizable
@@ -73,3 +88,5 @@ public class SceneManager {
         alert.showAndWait();
     }
 }
+
+
